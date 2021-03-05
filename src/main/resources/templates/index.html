@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    this is my index ------------------
+<p th:text="${message}"></p>
+<span th:text="${user.id}"></span><br>
+<span th:text="${user.name}"></span><br>
+<span th:text="${user.age}"></span>
+
+<table width="200">
+    <tr>
+        <th>编号</th>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>index</th>
+    </tr>
+    <tr th:each="user,iterStat : ${userList}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.age}"></td>
+        <td th:text="${iterStat.index}">index</td>
+    </tr>
+
+</table>
+</body>
+<!--拼接-->
+<span th:text="'欢迎'+${message}+'学习'"></span><br>
+<span th:text="|欢迎${message}学习|"></span>
+<!--if语句-->
+<h1 th:if="${message =='hello-thymeleaf'}">james的空间</h1>
+<h1 th:unless="${message =='hello-thymeleaf'}">不是james的空间</h1>
+<!--引入代码片段-->
+<div th:insert="~{foot :: my}">
+
+</div>
+------------------------
+<div th:replace="~{foot :: my}">
+
+</div>
+-------------
+<div th:include="~{foot :: my}">
+
+</div>
+<!--关于string操作-->
+<span th:if="${#strings.isEmpty(str)}">str000</span>
+<span th:text="${#strings.substring(str,0,5)}">str222</span>
+<span th:text="${#strings.abbreviate(str,10)}">str333</span>
+<!--时间-->
+时间：<span th:text="${#dates.format(date,'yyyy-MM-dd HH:mm:ss')}"></span>
+数字：<span th:text="|'$'${#numbers.formatDecimal(price,5,2)}|"></span>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

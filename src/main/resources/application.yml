@@ -1,0 +1,11 @@
+server:
+  port: 9999
+spring:
+  redis:
+    host: 192.168.188.128
+    port: 6379
+  session:
+    store-type: redis #session存储方式
+    timeout: 3600     #session过期时间 单位：秒
+  thymeleaf:
+    cache: false #设置不缓存，为了规避新建标签时，把以前的内容展示出来了
